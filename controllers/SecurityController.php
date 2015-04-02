@@ -33,8 +33,7 @@ use dektrium\user\traits\AjaxValidationTrait;
  */
 class SecurityController extends Controller
 {
-    use AjaxValidationTrait;
-    
+
     /** @var Finder */
     protected $finder;
 
