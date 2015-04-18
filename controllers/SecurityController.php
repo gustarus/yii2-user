@@ -73,16 +73,13 @@ class SecurityController extends Controller
     /** @inheritdoc */
     public function actions()
     {
-        return [
-            'auth' => [
-                'class' => AuthAction::className(),
-                // if user is not logged in, will try to log him in, otherwise
-                // will try to connect social account to user.
-                'successCallback' => \Yii::$app->user->isGuest
-                    ? [$this, 'authenticate']
-                    : [$this, 'connect'],
-            ]
-        ];
+		$action = $this->module->authAction ? : ['class' => AuthAction::className()];
+		$action['successCallback'] = \Yii::$app->user->isGuest
+			? [$this, 'authenticate'] : [$this, 'connect'];
+
+		return [
+			'auth' => $action
+		];
     }
 
     /**

@@ -75,6 +75,9 @@ class Module extends BaseModule
     /** @var array Model map */
     public $modelMap = [];
 
+	/** @var array  */
+	public $authAction = [];
+
     /**
      * @var string The prefix for user module URL.
      * @See [[GroupUrlRule::prefix]]
